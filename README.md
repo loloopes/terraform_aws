@@ -163,14 +163,17 @@ kubectl -n ingress-nginx get svc ingress-nginx-controller
 
 ## Sizing notes
 
-The full stack is **CPU-heavy** (credit-api ~1.5 CPU request, LLM pods, Airflow, Spark). For dev:
+The full stack is **CPU- and memory-heavy** (credit-api ~1.5 CPU request, LLM pods up to 8Gi, Airflow, Spark). Recommended sizing for the full platform on EKS:
 
-| Setting | Recommended |
-|---------|-------------|
-| `node_instance_types` | `["m5.xlarge"]` or `["m5.2xlarge"]` |
-| `node_desired_size` | `3` |
-| `node_min_size` | `2` |
-| `node_max_size` | `6` |
+| Setting | Minimum (dev) | **Recommended (full stack)** |
+|---------|---------------|------------------------------|
+| `node_instance_types` | `["m5.xlarge"]` | `["m6i.2xlarge"]` (8 vCPU, 32 GiB) |
+| `node_desired_size` | `3` | `4` |
+| `node_min_size` | `2` | `3` |
+| `node_max_size` | `6` | `8` |
+| `node_disk_size_gb` | `100` | `150` |
+
+After changing instance types, run `make plan` then `make apply`. EKS will roll worker nodes (brief pod rescheduling).
 
 ## EKS vs kind differences
 

@@ -25,31 +25,31 @@ variable "cluster_version" {
 variable "node_instance_types" {
   description = "EC2 instance types for the managed node group."
   type        = list(string)
-  default     = ["m5.xlarge"]
+  default     = ["m6i.2xlarge"]
 }
 
 variable "node_desired_size" {
   description = "Desired worker nodes."
   type        = number
-  default     = 3
+  default     = 4
 }
 
 variable "node_min_size" {
   description = "Minimum worker nodes."
   type        = number
-  default     = 2
+  default     = 3
 }
 
 variable "node_max_size" {
   description = "Maximum worker nodes."
   type        = number
-  default     = 6
+  default     = 8
 }
 
 variable "node_disk_size_gb" {
   description = "Root EBS volume size (GiB) per node."
   type        = number
-  default     = 100
+  default     = 150
 }
 
 variable "enable_ingress_nginx" {

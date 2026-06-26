@@ -1,4 +1,4 @@
-.PHONY: init init-local bootstrap bootstrap-init bootstrap-setup plan apply destroy output kubeconfig push-images deploy-platform verify-aws
+.PHONY: init init-local bootstrap bootstrap-init bootstrap-setup plan apply destroy output kubeconfig push-images deploy-platform verify-aws kubectl setup-hosts services
 
 WITH_ENV = bash scripts/with-env.sh
 
@@ -65,3 +65,6 @@ push-images:
 
 deploy-platform:
 	$(WITH_ENV) bash ../k8s/scripts/deploy-eks.sh
+
+services:
+	$(WITH_ENV) bash scripts/list-services.sh

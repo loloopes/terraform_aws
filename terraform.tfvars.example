@@ -2,11 +2,11 @@ aws_region          = "us-east-1"
 project_name        = "data-platform"
 environment         = "dev"
 cluster_version     = "1.31"
-node_instance_types = ["m5.xlarge"]
-node_desired_size   = 3
-node_min_size       = 2
-node_max_size       = 6
-node_disk_size_gb   = 100
+node_instance_types = ["m6i.2xlarge"]
+node_desired_size   = 4
+node_min_size       = 3
+node_max_size       = 8
+node_disk_size_gb   = 150
 single_nat_gateway  = true
 
 # Ingress: without base_domain, nginx LoadBalancer is used automatically.
