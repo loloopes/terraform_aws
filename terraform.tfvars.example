@@ -1,0 +1,24 @@
+aws_region          = "us-east-1"
+project_name        = "data-platform"
+environment         = "dev"
+cluster_version     = "1.31"
+node_instance_types = ["m5.xlarge"]
+node_desired_size   = 3
+node_min_size       = 2
+node_max_size       = 6
+node_disk_size_gb   = 100
+single_nat_gateway  = true
+
+# Ingress: without base_domain, nginx LoadBalancer is used automatically.
+enable_alb_ingress = true
+base_domain        = ""   # set e.g. "example.com" + route53_zone_id for HTTPS ALB
+
+# ALB + ACM (when you have a domain in Route53)
+# base_domain     = "example.com"
+# route53_zone_id = "Z0123456789ABCDEF"
+
+# Force nginx only (no ALB):
+# enable_alb_ingress = false
+
+# Or use an existing ACM certificate:
+# acm_certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/..."
