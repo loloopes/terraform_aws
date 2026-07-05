@@ -2,8 +2,8 @@ output "state_bucket_name" {
   value = aws_s3_bucket.terraform_state.id
 }
 
-output "use_lockfile_name" {
-  value = aws_use_lockfile.terraform_locks.name
+output "dynamodb_table_name" {
+  value = aws_dynamodb_table.terraform_locks.name
 }
 
 output "aws_region" {
@@ -16,7 +16,7 @@ output "backend_config" {
     bucket         = "${aws_s3_bucket.terraform_state.id}"
     key            = "eks/terraform.tfstate"
     region         = "${var.aws_region}"
-    use_lockfile = "${aws_use_lockfile.terraform_locks.name}"
+    dynamodb_table = "${aws_dynamodb_table.terraform_locks.name}"
     encrypt        = true
   EOT
 }

@@ -4,5 +4,5 @@
 bucket         = "data-platform-dev-tfstate-ACCOUNT_ID"
 key            = "eks/terraform.tfstate"
 region         = "us-east-1"
-use_lockfile = "data-platform-dev-tf-locks"
+dynamodb_table = "data-platform-dev-tf-locks"
 encrypt        = true
